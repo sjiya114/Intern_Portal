@@ -9,7 +9,6 @@ function Footer() {
     </div>
     <div className='flex flex-row w-full items-center justify-center space-x-4'>
       <p className='py-5 text-sm'>Copyright © 2025 - InternWala</p>
-      <button onClick={()=>{scroll(0,0,0)}} className='bg-yellow-300 mr-0 rounded-full cursor-pointer px-3 py-2'> <img src="" className='w-6 h-6' alt="" /></button>
    </div>  
     </div>
   )

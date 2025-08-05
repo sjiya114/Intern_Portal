@@ -3,7 +3,7 @@ import referral from '../assets/network.png';
 import { AppContext } from '../context/AppContext';
 import { LoaderIcon } from 'react-hot-toast';
 function Dashboard() {
-  const {getUserData,totalFund,userData}=useContext(AppContext);
+  const {getUserData,totalFund,userData,authUser}=useContext(AppContext);
   useEffect(()=>
   {
    getUserData();
@@ -44,7 +44,7 @@ function Dashboard() {
       </button>
       <button className='bg-white max-md:w-fit shadow-md shadow-orange-50 text-black font-sm font-bold px-2 py-2 rounded-2xl'>
           <h1>Total fund raised</h1>
-          <span>{localStorage.getItem("fund")}</span>
+          <span>{totalFund}</span>
       </button>
      </div>
     </div>

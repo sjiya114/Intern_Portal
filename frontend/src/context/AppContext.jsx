@@ -19,7 +19,8 @@ export const AppContextProvider=({children})=>
         {
             // getUserData();
             console.log(res.data);
-            getUserData();
+            // getUserData();
+            localStorage.setItem("token",res.data.token);
             toast.success(res.data.message);
             setToken(res.data.token);
             setUserData(res.data.user);
@@ -55,7 +56,7 @@ export const AppContextProvider=({children})=>
                 console.log(res.data);
                 setUserData(res.data.userData);
                 setTotalFund((Number)(res.data.totalFund));
-                localStorage.setItem("fund",String(res.data.totalFund));
+                localStorage.setItem("fund",res.data.totalFund);
                
              }
         } catch (error) {
@@ -75,8 +76,10 @@ export const AppContextProvider=({children})=>
         }
      }
      useEffect(()=>{
-       if(token)
+       if(token){
         axios.defaults.headers.token=token;
+       }
+      authUser();
      },[])
     const values={token,setToken,userData,setUserData,totalFund,setTotalFund,login,signup,authUser,getUserData}
     return(
