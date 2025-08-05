@@ -16,7 +16,7 @@ function Navbar() {
       <div className='flex flex-row font-bold font-stretch-extra-expanded   space-x-10'  >
       <NavLink to="/">Home</NavLink>
       <NavLink>Gallery</NavLink>
-      <NavLink to="/dashboard">Dashboard</NavLink>
+      <NavLink to={`${token?'/dashboard':'/login'}`}  >Dashboard</NavLink>
       <NavLink to="/reward" >Rewards</NavLink>
       </div>
        <div  className='flex flex-row font-bold space-x-6'>
@@ -32,15 +32,15 @@ function Navbar() {
           <img onClick={()=>{setHidden(!hidden)}}  src={`${hidden?menu_icon:cross_icon}`} className='w-8 h-8 mt-2' alt=""/>
         </div>
         {!hidden  &&<> < ul className='flex flex-col   items-center space-y-4 font-bold text-xl'>
-     <NavLink to="#home" >Home</NavLink>
-      <NavLink to="#about">Gallery</NavLink>
-      <NavLink to="#review"  >Dashboard</NavLink>
-       <NavLink to="#contact"  >Rewards</NavLink>
+     <NavLink to="/" >Home</NavLink>
+      <NavLink>Gallery</NavLink>
+      <NavLink to={`${token?'/dashboard':'/login'}`}  >Dashboard</NavLink>
+       <NavLink to="/reward"  >Rewards</NavLink>
       </ul> 
       <div  className='flex flex-row max-md:mt-4 max-md:space-y-4  max-md:flex-col font-bold space-x-6'>
          <button className='border-1 border-gray-400 rounded-4xl px-4 py-2'  >Contact</button>
-       {!token && <button onClick={()=>{navigate("/register")}} className='border-1  bg-white text-black shadow-2xl shadow-white hover:shadow-amber-100  border-gray-400 rounded-4xl px-4 py-2'>Login</button>}
-       {token.getItem("token") && <button onClick={()=>{localStorage.clear("token");setToken("");localStorage.clear("fund");  setUserData({})}} className='border-1  bg-white text-black shadow-2xl shadow-white hover:shadow-amber-100  border-gray-400 rounded-4xl px-4 py-2'>Logout</button>}
+       {!token && <button onClick={()=>{navigate("/login")}} className='border-1  bg-white text-black shadow-2xl shadow-white hover:shadow-amber-100  border-gray-400 rounded-4xl px-4 py-2'>Login</button>}
+       {token && <button onClick={()=>{localStorage.clear("token");setToken("");localStorage.clear("fund");  setUserData({})}} className='border-1  bg-white text-black shadow-2xl shadow-white hover:shadow-amber-100  border-gray-400 rounded-4xl px-4 py-2'>Logout</button>}
        </div> </>
 }            
              </div> 
